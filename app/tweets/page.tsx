@@ -132,9 +132,16 @@ export default async function TweetsPage({
 
   return (
     <main className="py-8">
-      <Suspense>
-        <CategoryFilter activeCats={activeCats} />
-      </Suspense>
+      <div className="flex items-center justify-between mb-2">
+        <Suspense>
+          <CategoryFilter activeCats={activeCats} />
+        </Suspense>
+        {!error && posts.length > 0 && (
+          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 text-white flex-shrink-0 ml-2 mb-6">
+            total {posts.length}
+          </span>
+        )}
+      </div>
 
       {error ? (
         <p className="text-red-400 text-sm">{error}</p>

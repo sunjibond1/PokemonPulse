@@ -179,9 +179,16 @@ export default async function KOLsPage({
 
   return (
     <main className="py-8">
-      <Suspense>
-        <CategoryFilter activeCats={activeCats} />
-      </Suspense>
+      <div className="flex items-center justify-between mb-2">
+        <Suspense>
+          <CategoryFilter activeCats={activeCats} />
+        </Suspense>
+        {!error && kols.length > 0 && (
+          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 text-white flex-shrink-0 ml-2 mb-6">
+            total {kols.length}
+          </span>
+        )}
+      </div>
 
       <FilterBar window={win} sort={sort} searchParams={flatSp} />
 
